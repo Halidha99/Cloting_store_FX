@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <AnchorPane layoutY="-22.0" prefHeight="453.0" prefWidth="684.0" style="-fx-background-color: #1E2D3B; -fx-border-color: #673ab7;">
+         <children>
+            <AnchorPane layoutX="-8.0" layoutY="-6.0" prefHeight="463.0" prefWidth="230.0" style="-fx-background-color: #8ed1fc; -fx-border-color: #673ab7; -fx-background-radius: 40;">
+               <children>
+                  <ImageView fitHeight="108.0" fitWidth="118.0" layoutX="51.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-clothes1-shop-65.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblShopName" layoutX="28.0" layoutY="242.0" prefHeight="54.0" prefWidth="184.0" text="Glamour Clothing" textFill="#040f4e">
+                     <font>
+                        <Font name="Blackadder ITC" size="27.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="18.0" layoutY="345.0" onAction="#btnRegisterOnAction" prefHeight="54.0" prefWidth="174.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, black, green, #9dd9d3, #4caf50); -fx-background-radius: 30;" text="Register" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <Label layoutX="342.0" layoutY="38.0" prefHeight="18.0" prefWidth="278.0" text="Welcome " textFill="#f2f2f2">
+               <font>
+                  <Font name="Berlin Sans FB" size="38.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="78.0" fitWidth="76.0" layoutX="514.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-users-50.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtUserName" focusColor="#4ffbca" layoutX="316.0" layoutY="151.0" prefHeight="26.0" prefWidth="295.0" promptText="User Name" style="-fx-border-color: #a1c8c4;" unFocusColor="#ea3d3d" />
+            <Label layoutX="316.0" layoutY="123.0" prefHeight="18.0" prefWidth="278.0" text="User Name" textFill="#f2f2f2">
+               <font>
+                  <Font name="Calibri" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="316.0" layoutY="215.0" prefHeight="18.0" prefWidth="278.0" text="Password" textFill="#f2f2f2">
+               <font>
+                  <Font name="Calibri" size="17.0" />
+               </font>
+            </Label>
+            <JFXPasswordField fx:id="txtxPassword" focusColor="#4ffbca" layoutX="312.0" layoutY="253.0" prefHeight="26.0" prefWidth="302.0" promptText="password" style="-fx-border-color: #a1c8c4;" unFocusColor="#ea3d3d" />
+            <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="240.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-admin-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="42.0" layoutX="240.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8-password-50.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnSignIn" buttonType="RAISED" layoutX="481.0" layoutY="349.0" onAction="#LoginOnAction" prefHeight="54.0" prefWidth="174.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
