@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="622.0" prefWidth="468.0" style="-fx-background-color: #1E2D3B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddRegisterFormController">
+   <children>
+      <ImageView fitHeight="78.0" fitWidth="82.0" layoutX="195.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-register-100.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="156.0" layoutY="103.0" prefHeight="18.0" prefWidth="197.0" text="Sign Up account" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="81.0" layoutY="152.0" prefHeight="33.0" prefWidth="305.0" promptText="Name" />
+      <TextField fx:id="contact" layoutX="81.0" layoutY="297.0" prefHeight="33.0" prefWidth="305.0" promptText="Phone Number" />
+      <TextField fx:id="email" layoutX="81.0" layoutY="249.0" prefHeight="33.0" prefWidth="305.0" promptText="Email" />
+      <TextField fx:id="adress" layoutX="81.0" layoutY="199.0" prefHeight="33.0" prefWidth="305.0" promptText="Address" />
+      <PasswordField fx:id="checkpassword" layoutX="81.0" layoutY="391.0" prefHeight="39.0" prefWidth="305.0" promptText="Re-type Password" />
+      <PasswordField fx:id="password" layoutX="81.0" layoutY="341.0" prefHeight="39.0" prefWidth="306.0" promptText="Password" />
+      <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="112.0" layoutY="454.0" onAction="#btnRegisterOnAction" prefHeight="54.0" prefWidth="242.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, black, green, #9dd9d3, #4caf50); -fx-background-radius: 30;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnSignIn" buttonType="RAISED" layoutX="285.0" layoutY="554.0" onAction="#LoginOnAction" prefHeight="39.0" prefWidth="138.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="112.0" layoutY="563.0" prefHeight="28.0" prefWidth="152.0" text="Sign In Account" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

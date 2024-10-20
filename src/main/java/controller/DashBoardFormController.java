@@ -1,12 +1,33 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 
 public class DashBoardFormController {
+
+    @FXML
+    private JFXButton btnCustomer;
+
+    @FXML
+    private JFXButton btnEmployee;
+
+    @FXML
+    private JFXButton btnItem;
+
+    @FXML
+    private JFXButton btnOrder;
+
+    @FXML
+    private JFXButton btnReport;
+
+    @FXML
+    private JFXButton btnReturn;
+
+    @FXML
+    private JFXButton btnSupplier;
 
     @FXML
     private BarChart<?, ?> chart;
@@ -15,7 +36,22 @@ public class DashBoardFormController {
     private Label lblDate;
 
     @FXML
+    private Label lblInvoice;
+
+    @FXML
+    private Label lblItem;
+
+    @FXML
+    private Label lblItemAmount;
+
+    @FXML
     private Label lblShopName;
+
+    @FXML
+    private Label lblSuppAmount;
+
+    @FXML
+    private Label lblSupplier;
 
     @FXML
     private Label lblTime;
@@ -27,55 +63,40 @@ public class DashBoardFormController {
     private Label lblUserType;
 
     @FXML
-    private Label lblUserType1;
+    private Label lblinAmount;
 
     @FXML
-    private Label lblUserType11;
-
-    @FXML
-    private Label lblUserType111;
-
-    @FXML
-    private Label lblUserType1111;
-
-    @FXML
-    private Label lblUserType12;
-
-    @FXML
-    private Label lblUserType121;
-
-    @FXML
-    void btnEmployeeOnAction(MouseEvent event) {
+    void btnCustomerOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnItemOnAction(MouseEvent event) {
+    void btnEmployeeOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnOrderDetailOnAction(MouseEvent event) {
+    void btnItemOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnOrderOnAction(MouseEvent event) {
+    void btnOrderOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnReportOnAction(MouseEvent event) {
+    void btnReportOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnReturnOnAction(MouseEvent event) {
+    void btnReturnOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSupplierOnAction(MouseEvent event) {
+    void btnSupplierOnAction(ActionEvent event) {
 
     }
 

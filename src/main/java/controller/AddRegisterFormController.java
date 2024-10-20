@@ -1,14 +1,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
-public class LoginFormController {
+public class AddRegisterFormController {
+
+    @FXML
+    private TextField adress;
 
     @FXML
     private JFXButton btnRegister;
@@ -17,16 +18,19 @@ public class LoginFormController {
     private JFXButton btnSignIn;
 
     @FXML
-    private Label lblShopName;
+    private PasswordField checkpassword;
 
     @FXML
-    private CheckBox txtShowPass;
+    private TextField contact;
 
     @FXML
-    private JFXTextField txtUserName;
+    private TextField email;
 
     @FXML
-    private JFXPasswordField txtxPassword;
+    private TextField name;
+
+    @FXML
+    private PasswordField password;
 
     @FXML
     void LoginOnAction(ActionEvent event) {

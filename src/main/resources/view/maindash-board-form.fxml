@@ -16,7 +16,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="703.0" prefWidth="863.0" style="-fx-background-color: #1E2D3B;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
    <children>
       <Rectangle arcHeight="20.0" arcWidth="20.0" height="703.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="207.0">
@@ -47,9 +46,9 @@
             <Font name="Blackadder ITC" size="27.0" />
          </font>
       </Label>
-      <Group layoutX="3.0" layoutY="130.0" onDragDetected="#btnEmployeeOnAction">
+      <Group layoutX="3.0" layoutY="130.0">
          <children>
-            <JFXButton prefHeight="68.0" prefWidth="202.0" style="-fx-background-color: #3f51b5;" text="            EMPLOYEE" textFill="WHITE">
+            <JFXButton fx:id="btnEmployee" onAction="#btnEmployeeOnAction" prefHeight="68.0" prefWidth="202.0" style="-fx-background-color: #3f51b5;" text="            EMPLOYEE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -61,9 +60,9 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="3.0" layoutY="207.0" onDragDetected="#btnItemOnAction">
+      <Group layoutX="3.0" layoutY="207.0">
          <children>
-            <JFXButton prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="          ITEM" textFill="WHITE">
+            <JFXButton fx:id="btnItem" onAction="#btnItemOnAction" prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="          ITEM" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -75,9 +74,9 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="3.0" layoutY="293.0" onDragDetected="#btnOrderOnAction">
+      <Group layoutX="3.0" layoutY="293.0">
          <children>
-            <JFXButton layoutY="-7.0" prefHeight="68.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="            ORDER" textFill="WHITE">
+            <JFXButton fx:id="btnOrder" layoutY="-7.0" onAction="#btnOrderOnAction" prefHeight="68.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="            ORDER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -89,23 +88,23 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="3.0" layoutY="367.0" onDragDetected="#btnOrderDetailOnAction">
+      <Group layoutX="3.0" layoutY="367.0">
          <children>
-            <JFXButton prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="       ORDER DETAIL" textFill="WHITE">
+            <JFXButton fx:id="btnCustomer" onAction="#btnCustomerOnAction" prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="       CUSTOMER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </JFXButton>
-            <ImageView fitHeight="34.0" fitWidth="30.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="60.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/icons8-more-details-100.png" />
+                  <Image url="@../image/customer.png" />
                </image>
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="5.0" layoutY="457.0" onDragDetected="#btnSupplierOnAction">
+      <Group layoutX="5.0" layoutY="457.0">
          <children>
-            <JFXButton layoutY="-7.0" prefHeight="68.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="            SUPPLIER" textFill="WHITE">
+            <JFXButton fx:id="btnSupplier" layoutY="-7.0" onAction="#btnSupplierOnAction" prefHeight="68.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="            SUPPLIER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -117,9 +116,9 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="2.0" layoutY="524.0" onDragDetected="#btnReturnOnAction">
+      <Group layoutX="2.0" layoutY="524.0">
          <children>
-            <JFXButton layoutY="13.0" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #3f51b5;" text="          RETURN" textFill="WHITE">
+            <JFXButton fx:id="btnReturn" layoutY="13.0" onAction="#btnReturnOnAction" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #3f51b5;" text="          RETURN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -131,9 +130,9 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="4.0" layoutY="605.0" onDragDetected="#btnReportOnAction">
+      <Group layoutX="4.0" layoutY="605.0">
          <children>
-            <JFXButton layoutY="13.0" prefHeight="70.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="          REPORT" textFill="WHITE">
+            <JFXButton fx:id="btnReport" layoutY="13.0" onAction="#btnReportOnAction" prefHeight="70.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="          REPORT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -190,12 +189,12 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label fx:id="lblUserType1" layoutX="231.0" layoutY="134.0" text="6000" textFill="#f7f7f7">
+      <Label fx:id="lblinAmount" layoutX="231.0" layoutY="134.0" text="6000" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblUserType11" layoutX="220.0" layoutY="164.0" text="sales Invoice" textFill="#f7f7f7">
+      <Label fx:id="lblInvoice" layoutX="220.0" layoutY="164.0" text="sales Invoice" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -241,27 +240,27 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label fx:id="lblUserType12" layoutX="455.0" layoutY="131.0" text="250" textFill="#f7f7f7">
+      <Label fx:id="lblSuppAmount" layoutX="455.0" layoutY="131.0" text="250" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblUserType111" layoutX="444.0" layoutY="161.0" text="Suppliers" textFill="#f7f7f7">
+      <Label fx:id="lblSupplier" layoutX="444.0" layoutY="161.0" text="Suppliers" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
       <ImageView fitHeight="54.0" fitWidth="59.0" layoutX="564.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/icons8-supplier-100.png" />
+            <Image url="@../image/icons8-supplier-101.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblUserType121" layoutX="686.0" layoutY="129.0" text="250000" textFill="#f7f7f7">
+      <Label fx:id="lblItemAmount" layoutX="686.0" layoutY="129.0" text="250000" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblUserType1111" layoutX="675.0" layoutY="159.0" text="Items" textFill="#f7f7f7">
+      <Label fx:id="lblItem" layoutX="675.0" layoutY="159.0" text="Items" textFill="#f7f7f7">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
