@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -15,6 +16,9 @@ public class LoginFormController {
 
     @FXML
     private JFXButton btnSignIn;
+
+    @FXML
+    private JFXComboBox<?> cmbUserType;
 
     @FXML
     private Label lblShopName;

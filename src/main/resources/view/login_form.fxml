@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.CheckBox?>
@@ -65,7 +66,7 @@
                   <Image url="@../image/icons8-password1-50.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnSignIn" buttonType="RAISED" layoutX="481.0" layoutY="349.0" onAction="#LoginOnAction" prefHeight="54.0" prefWidth="174.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
+            <JFXButton fx:id="btnSignIn" buttonType="RAISED" layoutX="495.0" layoutY="390.0" onAction="#LoginOnAction" prefHeight="54.0" prefWidth="174.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to right top, #6c5ce7, #8554ed, #9f48f1, #b935f2, #d300f0); -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -80,6 +81,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </CheckBox>
+            <JFXComboBox fx:id="cmbUserType" focusColor="#4ffbca" layoutX="357.0" layoutY="344.0" prefHeight="27.0" prefWidth="230.0" promptText="UserType" style="-fx-border-color: black;" unFocusColor="#ea3d3d" />
          </children>
       </AnchorPane>
    </children>
