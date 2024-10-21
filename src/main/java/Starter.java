@@ -12,8 +12,8 @@ public class Starter extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setResizable(false);
-        stage.setTitle("Main-Form");
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/maindash-board-form.fxml"))));
+        stage.setTitle("Login-Form");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_form.fxml"))));
     stage.show();
     }
 }

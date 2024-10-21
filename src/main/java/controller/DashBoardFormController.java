@@ -3,8 +3,12 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DashBoardFormController {
 
@@ -67,6 +71,14 @@ public class DashBoardFormController {
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) {
+        Stage stage=new Stage();
+        stage.setTitle("Customer Form");
+        try {
+            stage.setScene(FXMLLoader.load(getClass().getResource("/view/addCustomer_form.fxml")));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

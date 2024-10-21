@@ -3,13 +3,24 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import dao.custom.impl.CustomerDaoImpl;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
+import service.ServiceFactory;
+import util.ServiceType;
 
-public class AddCustomerFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AddCustomerFormController implements Initializable {
 
     @FXML
     private TableView<?> CustomerTable;
@@ -27,7 +38,7 @@ public class AddCustomerFormController {
     private JFXButton btnUpdate;
 
     @FXML
-    private JFXComboBox<?> cmbCustomerTittle;
+    private JFXComboBox<String> cmbCustomerTittle;
 
     @FXML
     private TableColumn<?, ?> colCusId;
@@ -56,13 +67,55 @@ public class AddCustomerFormController {
     @FXML
     private TextField txtxSearch;
 
+   //ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colCusId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colCustName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colCustEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colCustomerAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        CustomerTable.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue != null) {
+                setTextToValues((Customer) newValue);
+            }
+        }));
+        ObservableList<String> cusTittle = FXCollections.observableArrayList();
+        cusTittle.add("MRS");
+        cusTittle.add("MR");
+        cusTittle.add("MISS");
+        cmbCustomerTittle.setItems(cusTittle);
+    }
+
+    private void setTextToValues(Customer newValue) {
+        txtCustomerId.setText(newValue.getId());
+        txtCustomerName.setText(newValue.getName());
+        txtCustomerEmail.setText(newValue.getEmail());
+        txtCustomerAddress.setText(newValue.getAddress());
+    }
+
+    private void clear(){
+        //txtCusID.setText(customerBoImpl.generateCustomerId());
+        txtCustomerName.setText("");
+        txtCustomerEmail.setText("");
+        txtCustomerAddress.setText("");
+    }
     @FXML
     void btnBackOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnCustAddOnAction(ActionEvent event) {
+   public void btnCustAddOnAction(ActionEvent event) {
+        Customer customer = new Customer(
+                txtCustomerId.getText(),
+                cmbCustomerTittle.getValue(),
+                txtCustomerName.getText(),
+                txtCustomerEmail.getText(),
+                txtCustomerAddress.getText()
+
+
+        );
+
 
     }
 
@@ -80,5 +133,6 @@ public class AddCustomerFormController {
     void searchCustOnAction(ActionEvent event) {
 
     }
+
 
 }
