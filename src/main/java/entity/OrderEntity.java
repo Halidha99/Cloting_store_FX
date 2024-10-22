@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "orders")
 public class OrderEntity {
     @Id
+
     private String id;
 
     @ManyToOne

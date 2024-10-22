@@ -1,21 +1,21 @@
-package Entity;
+package entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 @Setter
-@ToString
-@Entity(name = "supplier")
-@Table(name = "supplier")
-public class SupplierEntity {
+@Entity(name = "customer")
+@Table(name = "customer")
+public class CustomerEntity {
     @Id
+
     private String id;
     private String tittle;
     private String name;
-    private String company;
-    private String mobile;
     private String email;
+    private String address;
 }

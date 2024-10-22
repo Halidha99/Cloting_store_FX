@@ -1,12 +1,13 @@
 package dao;
 
+import entity.CustomerEntity;
 import javafx.collections.ObservableList;
 
 
 public interface CrudDao <T,S> extends SuperDao{
     T search (S s);
 
-    ObservableList<T> getAll();
+    ObservableList<CustomerEntity> getAll();
 
     boolean save(T t);
 

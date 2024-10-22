@@ -1,5 +1,6 @@
 package dao.custom.impl;
 
+import entity.CustomerEntity;
 import dao.custom.CustomerDao;
 import javafx.collections.ObservableList;
 import model.Customer;
@@ -12,7 +13,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public ObservableList<Customer> getAll() {
+    public ObservableList<CustomerEntity> getAll() {
         return null;
     }
 

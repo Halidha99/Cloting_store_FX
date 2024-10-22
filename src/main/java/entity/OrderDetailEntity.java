@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +14,7 @@ import lombok.*;
 @Table(name = "order_details")
 public class OrderDetailEntity {
     @Id
+
     private String itemID;
     private Integer qty;
     private Double itemTotal;

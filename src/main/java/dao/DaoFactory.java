@@ -14,7 +14,7 @@ public class DaoFactory {
         return instance!=null?instance:(instance=new DaoFactory());
     }
 
-    public <T extends SuperDao>T getDao(DaoType type){
+    public <T extends SuperDao>T getDaoType(DaoType type){
         switch (type){
             case EMPLOYEE:return (T)new EmployeeDaoImpl();
             case CUSTOMER:return (T)new CustomerDaoImpl();

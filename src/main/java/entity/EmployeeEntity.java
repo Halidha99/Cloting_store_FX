@@ -1,8 +1,6 @@
-package Entity;
+package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
@@ -14,6 +12,7 @@ import lombok.*;
 @Table(name = "employee")
 public class EmployeeEntity {
     @Id
+
     private String id;
     private String tittle;
     private String name;

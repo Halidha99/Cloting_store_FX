@@ -1,6 +1,6 @@
 package dao.custom;
 
-import Entity.ItemEntity;
+import entity.ItemEntity;
 import dao.CrudDao;
 
 

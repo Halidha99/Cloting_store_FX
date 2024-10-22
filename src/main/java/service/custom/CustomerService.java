@@ -12,4 +12,6 @@ public interface CustomerService extends SuperService {
     boolean deleteCustomerUserById(String text);
     Customer searchCustomerByName(String name);
     Customer searchItemByID(String id);
+
+    boolean isValidEmail(String text);
 }

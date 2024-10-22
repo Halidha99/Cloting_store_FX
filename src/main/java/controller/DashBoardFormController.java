@@ -1,16 +1,28 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.ResourceBundle;
 
-public class DashBoardFormController {
+public class DashBoardFormController implements Initializable {
 
     @FXML
     private JFXButton btnCustomer;
@@ -68,37 +80,113 @@ public class DashBoardFormController {
 
     @FXML
     private Label lblinAmount;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+loadDateAndTime();
+    }
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) {
-        Stage stage=new Stage();
-        stage.setTitle("Customer Form");
         try {
-            stage.setScene(FXMLLoader.load(getClass().getResource("/view/addCustomer_form.fxml")));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addCustomer_form.fxml"));
+
+
+            AnchorPane root = loader.load();
+
+
+            Scene scene = new Scene(root);
+
+
+            Stage stage = (Stage) btnCustomer.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.setTitle("Customer Form");
             stage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void btnEmployeeOnAction(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addEmployee_form.fxml"));
+
+
+            AnchorPane root = loader.load();
+
+
+            Scene scene = new Scene(root);
+
+
+            Stage stage = (Stage) btnCustomer.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.setTitle("Employee Form");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
 
     @FXML
-    void btnEmployeeOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnItemOnAction(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addItem_form.fxml"));
+
+
+            AnchorPane root = loader.load();
+
+
+            Scene scene = new Scene(root);
+
+
+            Stage stage = (Stage) btnCustomer.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.setTitle("Item Form");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void btnOrderOnAction(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/order_form.fxml"));
+
+
+            AnchorPane root = loader.load();
+
+
+            Scene scene = new Scene(root);
+
+
+            Stage stage = (Stage) btnOrder.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.setTitle("Order Form");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void btnReportOnAction(ActionEvent event) {
+
 
     }
 
@@ -109,6 +197,26 @@ public class DashBoardFormController {
 
     @FXML
     void btnSupplierOnAction(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addSupplier_form.fxml"));
+
+
+            AnchorPane root = loader.load();
+
+
+            Scene scene = new Scene(root);
+
+
+            Stage stage = (Stage) btnSupplier.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.setTitle("Supplier Form");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -116,5 +224,27 @@ public class DashBoardFormController {
     void btnlogOutOnAction(ActionEvent event) {
 
     }
+    private void loadDateAndTime() {
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = f.format(date);
+
+       lblDate.setText(dateNow);
+
+//-------------------------------------------------------------------------------
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime now = LocalTime.now();
+           lblTime.setText(now.getHour() + " : " + now.getMinute() + " : " + now.getSecond());
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+
+    }
+
 
 }
