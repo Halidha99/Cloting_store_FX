@@ -73,7 +73,7 @@ public class AddCustomerFormController implements Initializable {
     @FXML
     private TextField txtxSearch;
 
-    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+  CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,8 +91,8 @@ public class AddCustomerFormController implements Initializable {
             }
         });
 
-      txtCustomerId.setText(customerService.generateCustomerId());
-        loadTable();
+
+       loadTable();
     }
 
     private void setTextToValues(Customer newValue) {
@@ -108,12 +108,19 @@ public class AddCustomerFormController implements Initializable {
         txtCustomerName.clear();
         txtCustomerEmail.clear();
         txtCustomerAddress.clear();
-        cmbCustomerTittle.getSelectionModel().clearSelection(); // Clear selection
+        cmbCustomerTittle.getSelectionModel().clearSelection();
     }
 
-    private void loadTable() {
-        CustomerTable.setItems(customerService.getAllCustomer());
+ public void loadTable() {
+        ObservableList<Customer> customers = customerService.getAllCustomer();
+
+        if (customers != null && !customers.isEmpty()) {
+            CustomerTable.setItems(customers);
+        } else {
+            System.out.println("No customers found or customer list is null.");
+        }
     }
+
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
@@ -137,7 +144,7 @@ public class AddCustomerFormController implements Initializable {
                 txtCustomerEmail.getText(),
                 txtCustomerAddress.getText()
         );
-
+        System.out.println(customer);
         if (!txtCustomerName.getText().isEmpty() && customerService.isValidEmail(txtCustomerEmail.getText()) && !txtCustomerAddress.getText().isEmpty()) {
             boolean isAdd = customerService.addCustomer(customer);
             if (isAdd) {

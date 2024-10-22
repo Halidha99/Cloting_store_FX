@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 public interface CrudDao <T,S> extends SuperDao{
     T search (S s);
 
-    ObservableList<CustomerEntity> getAll();
+    ObservableList<T> getAll();
 
     boolean save(T t);
 

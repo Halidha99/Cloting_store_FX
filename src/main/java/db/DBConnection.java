@@ -8,7 +8,7 @@ public class DBConnection {
     private static DBConnection instance;
     private Connection connection;
     private DBConnection() throws SQLException {
-        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/clothingShop", "root", "1234");
+        connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/clothingshop", "root", "1234");
     }
     public Connection getConnection(){
 
@@ -17,4 +17,5 @@ public class DBConnection {
     public static DBConnection getInstance() throws SQLException {
         return null==instance?instance=new DBConnection():instance;
     }
+
 }

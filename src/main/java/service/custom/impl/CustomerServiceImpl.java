@@ -16,40 +16,68 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String generateCustomerId() {
-
         String lastCustomerId = customerDaoImpl.getLatestId();
-        if (lastCustomerId==null){
+
+        if (lastCustomerId == null || lastCustomerId.isEmpty()) {
+
             return "C001";
         }
-        int number = Integer.parseInt(lastCustomerId.split("C")[0]);
-        number++;
-        return String.format("C%03d", number);
+
+        try {
+
+            String[] parts = lastCustomerId.split("C");
+
+            if (parts.length < 2 || parts[1].isEmpty()) {
+                throw new NumberFormatException("Invalid customer ID format.");
+            }
+
+
+            int number = Integer.parseInt(parts[1]);
+            number++;
+
+
+            return String.format("C%03d", number);
+        } catch (NumberFormatException e) {
+
+            e.printStackTrace();
+            throw new RuntimeException("Failed to generate customer ID from: " + lastCustomerId);
+        }
     }
+
 
     @Override
     public boolean addCustomer(Customer customer) {
 
-       Customer customerEntity= new ObjectMapper().convertValue(customer, Customer.class);
-        return customerDaoImpl.save(customerEntity);
+        CustomerEntity userEntity = new ObjectMapper().convertValue(customer, CustomerEntity.class);
+        return customerDaoImpl.save(userEntity);
     }
 
     @Override
-    public ObservableList getAllCustomer() {
 
-        ObservableList<CustomerEntity> list = customerDaoImpl.getAll();
-        ObservableList<Customer> userList = FXCollections.observableArrayList();
+    public ObservableList<Customer> getAllCustomer() {
+        ObservableList<CustomerEntity> entityList = customerDaoImpl.getAll(); // Assuming this returns a list of CustomerEntity
+        ObservableList<Customer> cusList = FXCollections.observableArrayList();
 
-        list.forEach(userEntity -> {
-            userList.add(new ObjectMapper().convertValue(userEntity,Customer.class));
-        });
-        return userList;
+        if (entityList != null) {
+            entityList.forEach(custEntity -> {
+                if (custEntity != null) {
+                    Customer customer = new ObjectMapper().convertValue(custEntity, Customer.class);
+                    cusList.add(customer);
+                }
+            });
+        } else {
+            System.out.println("Customer list is null.");
+        }
+
+        return cusList;
     }
+
 
     @Override
     public boolean updateCustomer(Customer customer) {
 
-        Customer customerEntity = new ObjectMapper().convertValue(customer, Customer.class);
-        return customerDaoImpl.update(customerEntity);
+        CustomerEntity userEntity = new ObjectMapper().convertValue(customer, CustomerEntity.class);
+        return customerDaoImpl.update(userEntity);
     }
 
     @Override
@@ -60,14 +88,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer searchCustomerByName(String name) {
-        Customer customerEntity = customerDaoImpl.searchByName(name);
+
+        CustomerEntity customerEntity = customerDaoImpl.searchByName(name);
         return new ObjectMapper().convertValue(customerEntity,Customer.class);
     }
 
     @Override
     public Customer searchItemByID(String id) {
 
-        Customer customerEntity = customerDaoImpl.search(id);
+        CustomerEntity customerEntity = customerDaoImpl.search(id);
         return new ObjectMapper().convertValue(customerEntity, Customer.class);
     }
 
