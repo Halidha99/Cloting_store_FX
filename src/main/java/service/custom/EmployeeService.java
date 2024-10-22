@@ -11,4 +11,6 @@ public interface EmployeeService extends SuperService {
     boolean updateEmployee(Employee employee);
     boolean deleteEmployeeById(String text);
     Employee searchEmployeeByName(String name);
+
+    boolean isValidEmail(String text);
 }
