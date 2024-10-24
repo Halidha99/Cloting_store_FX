@@ -14,7 +14,7 @@ public class Supplier {
     private String company;
     private String mobile;
     private String email;
-    private Item item;
+  //private Item item;
 
 
 }

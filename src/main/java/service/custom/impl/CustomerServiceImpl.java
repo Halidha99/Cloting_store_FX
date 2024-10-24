@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
 
     public ObservableList<Customer> getAllCustomer() {
-        ObservableList<CustomerEntity> entityList = customerDaoImpl.getAll(); // Assuming this returns a list of CustomerEntity
+        ObservableList<CustomerEntity> entityList = customerDaoImpl.getAll();
         ObservableList<Customer> cusList = FXCollections.observableArrayList();
 
         if (entityList != null) {

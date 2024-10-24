@@ -122,7 +122,7 @@ loadDateAndTime();
             Scene scene = new Scene(root);
 
 
-            Stage stage = (Stage) btnCustomer.getScene().getWindow();
+            Stage stage = (Stage) btnEmployee.getScene().getWindow();
 
 
             stage.setScene(scene);
@@ -135,35 +135,40 @@ loadDateAndTime();
     }
 
     @FXML
+
     void btnItemOnAction(ActionEvent event) {
         try {
+            System.out.println("Attempting to load FXML...");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addItem_form.fxml"));
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addItem_form.fxml"));
 
             AnchorPane root = loader.load();
-
+            System.out.println("FXML Loaded");
 
             Scene scene = new Scene(root);
 
-
-            Stage stage = (Stage) btnCustomer.getScene().getWindow();
-
+            Stage stage = (Stage) btnItem.getScene().getWindow();
+            if (stage == null) {
+                System.out.println("Stage is null");
+            }
 
             stage.setScene(scene);
             stage.setTitle("Item Form");
             stage.show();
+            System.out.println("New scene set and shown.");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
+
+
+}
 
     @FXML
     void btnOrderOnAction(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/order_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/order_form.fxml"));
 
 
             AnchorPane root = loader.load();

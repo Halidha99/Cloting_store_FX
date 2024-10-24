@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         String lastEmployeeId = employeeDaoImpl.getLatestId();
         if (lastEmployeeId==null){
-            return "E0001";
+            return "E001";
         }
         int number = Integer.parseInt(lastEmployeeId.split("E")[1]);
         number++;

@@ -17,7 +17,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="633.0" prefWidth="824.0" style="-fx-background-color: #bbdefb;" stylesheets="@../Css/Table.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddItemFormController">
    <children>
       <Rectangle arcHeight="20.0" arcWidth="20.0" height="332.0" layoutX="2.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="818.0">
@@ -41,12 +40,12 @@
       <TableView fx:id="ItemTable" layoutX="27.0" layoutY="388.0" prefHeight="200.0" prefWidth="782.0" style="-fx-background-color: #0288d1;">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="75.0" text="Item Code" />
-          <TableColumn fx:id="colCategory" prefWidth="94.4000244140625" text="Category" />
-            <TableColumn fx:id="colPrdName" prefWidth="173.5999755859375" text="ProductName" />
-            <TableColumn fx:id="colPacSz" prefWidth="91.99993896484375" text="ProductSize" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="97.5999755859375" text="Unit Price" />
-            <TableColumn fx:id="colQty" prefWidth="107.199951171875" text="Qty" />
-            <TableColumn fx:id="colSupplierId" prefWidth="143.20001220703125" text="Supplier Id" />
+          <TableColumn fx:id="colPrdName" prefWidth="94.4000244140625" text="Product Name" />
+            <TableColumn fx:id="colQty" prefWidth="91.99993896484375" text="Qty" />
+            <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" text="Category" />
+            <TableColumn fx:id="colSize" prefWidth="107.199951171875" text="Size" />
+            <TableColumn fx:id="colSupplierId" prefWidth="184.0" text="Supplier Id" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="130.4000244140625" text="Price" />
         </columns>
       </TableView>
       <Label layoutX="5.0" layoutY="14.0" prefHeight="18.0" prefWidth="238.0" text="Add Items" textFill="#101010">
@@ -76,12 +75,12 @@
       </JFXTextField>
       <JFXComboBox fx:id="cmbCategory" layoutX="252.0" layoutY="87.0" prefHeight="26.0" prefWidth="182.0" promptText="Category" unFocusColor="#944343" />
       <JFXComboBox fx:id="cmbPrdSize" layoutX="252.0" layoutY="162.0" prefHeight="26.0" prefWidth="182.0" promptText="Product Size" unFocusColor="#944343" />
-      <JFXTextField fx:id="txxtQty" layoutX="248.0" layoutY="224.0" prefHeight="27.0" prefWidth="190.0" promptText="Qty" unFocusColor="#944343">
+      <JFXTextField fx:id="txxtQty" layoutX="248.0" layoutY="217.0" prefHeight="27.0" prefWidth="190.0" promptText="Qty" unFocusColor="#944343">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXComboBox fx:id="cmbSupplierId" layoutX="489.0" layoutY="99.0" prefHeight="26.0" prefWidth="182.0" promptText="Supplier Id" unFocusColor="#944343" />
+      <JFXComboBox fx:id="cmbSupplierId" layoutX="473.0" layoutY="86.0" onAction="#supIDOnAction" prefHeight="26.0" prefWidth="96.0" promptText="Supplier Id" unFocusColor="#944343" />
       <JFXButton layoutX="729.0" layoutY="207.0" onAction="#btnAddStockOnAction" prefHeight="35.0" prefWidth="105.0" style="-fx-background-color: green;" text="Add Stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -108,5 +107,10 @@
          </font>
       </Button>
       <TextField fx:id="txtxSearch" layoutX="106.0" layoutY="317.0" onAction="#btnSearchItem" prefHeight="26.0" prefWidth="630.0" promptText="Search Item" />
+      <JFXTextField fx:id="txtSupName" layoutX="601.0" layoutY="81.0" prefHeight="27.0" prefWidth="190.0" promptText="Supplier Name" unFocusColor="#944343">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

@@ -17,7 +17,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="536.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddSupplierFormController">
    <children>
       <AnchorPane prefHeight="633.0" prefWidth="824.0" style="-fx-background-color: #bbdefb;" stylesheets="@../Css/Table.css">
@@ -43,11 +42,10 @@
             <TableView fx:id="SupplierTable" layoutX="27.0" layoutY="388.0" prefHeight="200.0" prefWidth="782.0" style="-fx-background-color: #0288d1;">
                <columns>
                   <TableColumn fx:id="colSuppId" prefWidth="75.0" text="Supplier Id" />
-                  <TableColumn fx:id="colSuppliername" prefWidth="119.20001220703125" text="Supplier Name" />
-                  <TableColumn fx:id="colSuppCompany" prefWidth="136.79998779296875" text="Supplier Company" />
-                  <TableColumn fx:id="colsuppMobile" prefWidth="151.199951171875" text="Supplier Mobile" />
-                  <TableColumn fx:id="colSupplierEmail" prefWidth="169.5999755859375" text="Supplier Email" />
-                  <TableColumn fx:id="colItemName" prefWidth="128.80002441406248" text="Item Name" />
+                  <TableColumn fx:id="colSuppliername" prefWidth="191.20001220703125" text="Supplier Name" />
+                  <TableColumn fx:id="colSuppCompany" prefWidth="156.79998779296875" text="Supplier Company" />
+                  <TableColumn fx:id="colsuppMobile" prefWidth="170.39996337890625" text="Supplier Mobile" />
+                  <TableColumn fx:id="colSupplierEmail" prefWidth="188.800048828125" text="Supplier Email" />
                </columns>
             </TableView>
             <Label layoutX="5.0" layoutY="14.0" prefHeight="18.0" prefWidth="238.0" text="Add Supplier" textFill="#101010">
@@ -112,7 +110,6 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXComboBox fx:id="cmbItem" layoutX="456.0" layoutY="156.0" prefHeight="26.0" prefWidth="190.0" promptText="Item" unFocusColor="#944343" />
          </children>
       </AnchorPane>
    </children>
