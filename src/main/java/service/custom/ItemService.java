@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import model.Item;
 import service.SuperService;
 
+
+
 public interface ItemService extends SuperService {
     String generateItemId();
     boolean addItem(Item item);

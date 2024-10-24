@@ -1,10 +1,11 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Item {
     private String id;
     private String name;
@@ -13,5 +14,20 @@ public class Item {
     private String size;
     private Supplier supplier;
     private Integer unitPrice;
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", qty=" + qty +
+                ", category='" + category + '\'' +
+                ", size='" + size + '\'' +
+                ", supplier=" + supplier +
+                ", unitPrice=" + unitPrice +
+                '}';
+    }
+
+
 
 }

@@ -40,12 +40,11 @@
       <TableView fx:id="ItemTable" layoutX="27.0" layoutY="388.0" prefHeight="200.0" prefWidth="782.0" style="-fx-background-color: #0288d1;">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="75.0" text="Item Code" />
-          <TableColumn fx:id="colPrdName" prefWidth="94.4000244140625" text="Product Name" />
-            <TableColumn fx:id="colQty" prefWidth="91.99993896484375" text="Qty" />
-            <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" text="Category" />
-            <TableColumn fx:id="colSize" prefWidth="107.199951171875" text="Size" />
-            <TableColumn fx:id="colSupplierId" prefWidth="184.0" text="Supplier Id" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="130.4000244140625" text="Price" />
+          <TableColumn fx:id="colCategory" prefWidth="154.4000244140625" text="Category" />
+            <TableColumn fx:id="colPrdName" prefWidth="189.5999755859375" text="Name" />
+            <TableColumn fx:id="colQty" prefWidth="104.0" text="Qty" />
+            <TableColumn fx:id="colSize" prefWidth="144.00006103515625" text="Size" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="118.39990234375" text="Price" />
         </columns>
       </TableView>
       <Label layoutX="5.0" layoutY="14.0" prefHeight="18.0" prefWidth="238.0" text="Add Items" textFill="#101010">

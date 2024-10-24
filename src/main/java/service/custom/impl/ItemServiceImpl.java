@@ -56,7 +56,7 @@ public class ItemServiceImpl implements ItemService {
     public ObservableList getAllItem() {
         ObservableList<ItemEntity> allItem = itemDao.getAll();
         ObservableList<Item> itemList = FXCollections.observableArrayList();
-        itemList.forEach(itemEntity->{
+        allItem.forEach(itemEntity->{
             itemList.add(new ObjectMapper().convertValue(itemEntity,Item.class));
         });
         return  itemList;
