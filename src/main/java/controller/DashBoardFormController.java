@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -167,26 +168,32 @@ loadDateAndTime();
     @FXML
     void btnOrderOnAction(ActionEvent event) {
         try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/order_form.fxml"));
-
-
+            URL resource = getClass().getResource("/view/placeOrder_form.fxml");
+            if (resource == null) {
+                System.out.println("FXML file not found!");
+                return;
+            }
+            FXMLLoader loader = new FXMLLoader(resource);
             AnchorPane root = loader.load();
-
-
             Scene scene = new Scene(root);
-
-
             Stage stage = (Stage) btnOrder.getScene().getWindow();
-
-
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.setTitle("Order Form");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+            showAlert("Error", "Could not load the order form. Please check the FXML file and its path.");
         }
+    }
 
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

@@ -1,20 +1,18 @@
 package model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-
-@Data
 @AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Data
 @Getter
 @Setter
-public class Order {
+public class OrderTablecart {
     private String id;
-    private Customer customer;
     private LocalDate date;
-    private LocalTime time;
     private Double netTotal;
+    private String custID;
 }
