@@ -62,6 +62,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new ObjectMapper().convertValue(employeeEntity,Employee.class);
     }
 
+    @Override
+    public Employee searchUserByEmail(String email) {
+        EmployeeEntity employeeEntity = employeeDaoImpl.searchByEmail(email);
+        return new ObjectMapper().convertValue(employeeEntity,Employee.class);
+    }
+
     public boolean isValidEmail(String email) {
         if (email == null || email.trim().isEmpty()) {
             return false;

@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeDashBoardFormController">
    <children>
       <AnchorPane prefHeight="703.0" prefWidth="863.0" style="-fx-background-color: #1E2D3B;">
@@ -46,9 +45,9 @@
                   <Font name="Blackadder ITC" size="27.0" />
                </font>
             </Label>
-            <Group layoutX="6.0" layoutY="129.0" onDragDetected="#btnItemOnAction">
+            <Group layoutX="6.0" layoutY="129.0">
                <children>
-                  <JFXButton prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="          ITEM" textFill="WHITE">
+                  <JFXButton fx:id="btnItem" onAction="#btnItemOnAction" prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="          ITEM" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -60,9 +59,9 @@
                   </ImageView>
                </children>
             </Group>
-            <Group layoutX="6.0" layoutY="238.0" onDragDetected="#btnOrderOnAction">
+            <Group layoutX="6.0" layoutY="238.0">
                <children>
-                  <JFXButton layoutY="-7.0" prefHeight="68.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="            ORDER" textFill="WHITE">
+                  <JFXButton fx:id="btnOrder" layoutY="-7.0" onAction="#btnOrderOnAction" prefHeight="68.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="            ORDER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -74,9 +73,9 @@
                   </ImageView>
                </children>
             </Group>
-            <Group layoutX="6.0" layoutY="316.0" onDragDetected="#btnOrderDetailOnAction">
+            <Group layoutX="6.0" layoutY="316.0">
                <children>
-                  <JFXButton prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="       ORDER DETAIL" textFill="WHITE">
+                  <JFXButton fx:id="btnOrDetail" onAction="#btnOrderDetailOnAction" prefHeight="70.0" prefWidth="201.0" style="-fx-background-color: #3f51b5;" text="       ORDER DETAIL" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -88,9 +87,9 @@
                   </ImageView>
                </children>
             </Group>
-            <Group layoutX="7.0" layoutY="435.0" onDragDetected="#btnSupplierOnAction">
+            <Group layoutX="7.0" layoutY="435.0">
                <children>
-                  <JFXButton layoutY="-7.0" prefHeight="68.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="            SUPPLIER" textFill="WHITE">
+                  <JFXButton fx:id="btnSupplier" layoutY="-7.0" onAction="#btnSupplierOnAction" prefHeight="68.0" prefWidth="198.0" style="-fx-background-color: #3f51b5;" text="            SUPPLIER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -102,9 +101,9 @@
                   </ImageView>
                </children>
             </Group>
-            <Group layoutX="6.0" layoutY="537.0" onDragDetected="#btnReturnOnAction">
+            <Group layoutX="6.0" layoutY="537.0">
                <children>
-                  <JFXButton layoutY="13.0" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #3f51b5;" text="          RETURN" textFill="WHITE">
+                  <JFXButton fx:id="btnReturn" layoutY="13.0" onAction="#btnReturnOnAction" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: #3f51b5;" text="          RETURN" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -121,7 +120,7 @@
                   <Image url="@../image/clothes-shop-hanger-modern-shop-boutique_1132842-23633.jpg" />
                </image>
             </ImageView>
-            <JFXButton layoutX="721.0" layoutY="647.0" onAction="#btnlogOutOnAction" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #1a237e; -fx-background-radius: 20;" text="LOG OUT" textFill="WHITE" />
+            <JFXButton fx:id="btnlogOutOnAction" layoutX="721.0" layoutY="647.0" onAction="#btnlogOutOnAction" prefHeight="36.0" prefWidth="108.0" style="-fx-background-color: #1a237e; -fx-background-radius: 20;" text="LOG OUT" textFill="WHITE" />
             <Label fx:id="lblDate" layoutX="714.0" layoutY="21.0" prefHeight="20.0" prefWidth="94.0" text="yyyy-mm-dd" textFill="#fcfbfb">
                <font>
                   <Font name="System Bold" size="14.0" />

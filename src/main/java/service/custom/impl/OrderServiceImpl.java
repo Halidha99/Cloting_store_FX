@@ -24,11 +24,11 @@ public class OrderServiceImpl implements OrderService {
     public String generateOrderId() {
         String lastItemId = orderDao.getLatestId();
         if (lastItemId==null){
-            return "OR0001";
+            return "OR001";
         }
         int number = Integer.parseInt(lastItemId.split("OR")[1]);
         number++;
-        return String.format("OR%04d", number);
+        return String.format("OR%03d", number);
     }
 
     @Override

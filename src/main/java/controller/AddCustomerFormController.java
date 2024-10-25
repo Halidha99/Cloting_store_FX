@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import model.Customer;
 import service.ServiceFactory;
 import service.custom.CustomerService;
-
 import util.ServiceType;
 
 import java.io.IOException;
@@ -73,7 +72,7 @@ public class AddCustomerFormController implements Initializable {
     @FXML
     private TextField txtxSearch;
 
-  CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,8 +90,7 @@ public class AddCustomerFormController implements Initializable {
             }
         });
 
-
-       loadTable();
+        loadTable();
     }
 
     private void setTextToValues(Customer newValue) {
@@ -111,7 +109,7 @@ public class AddCustomerFormController implements Initializable {
         cmbCustomerTittle.getSelectionModel().clearSelection();
     }
 
- public void loadTable() {
+    public void loadTable() {
         ObservableList<Customer> customers = customerService.getAllCustomer();
 
         if (customers != null && !customers.isEmpty()) {
@@ -121,17 +119,20 @@ public class AddCustomerFormController implements Initializable {
         }
     }
 
-
     @FXML
     void btnBackOnAction(ActionEvent event) {
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.setTitle("Login-Form");
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+
+        stage.close();
+
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/maindash-board-form.fxml"))));
-            stage.show();
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/maindash-board-form.fxml"))));
+            newStage.setTitle("Main Dashboard");
+            newStage.setResizable(false);
+            newStage.show();
         } catch (IOException e) {
-            showAlert("Error", "Unable to load the dashboard.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Unable to load the dashboard.");
         }
     }
 
@@ -148,12 +149,12 @@ public class AddCustomerFormController implements Initializable {
         if (!txtCustomerName.getText().isEmpty() && customerService.isValidEmail(txtCustomerEmail.getText()) && !txtCustomerAddress.getText().isEmpty()) {
             boolean isAdd = customerService.addCustomer(customer);
             if (isAdd) {
-                showAlert("Customer Added", "Customer Added Successfully..!");
+                showAlert(Alert.AlertType.ERROR, "Customer Added", "Customer Added Successfully..!");
                 clear();
                 loadTable();
             }
         } else {
-            showAlert("Error", "Please fill all fields correctly.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Please fill all fields correctly.");
         }
     }
 
@@ -168,11 +169,11 @@ public class AddCustomerFormController implements Initializable {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 boolean isDeleted = customerService.deleteCustomerUserById(txtCustomerId.getText());
                 if (isDeleted) {
-                    showAlert("Customer Deleted", "Customer deleted successfully.");
+                    showAlert(Alert.AlertType.ERROR, "Customer Deleted", "Customer deleted successfully.");
                     clear();
                     loadTable();
                 } else {
-                    showAlert("Error", "Failed to delete customer.");
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to delete customer.");
                 }
             }
         }
@@ -191,14 +192,14 @@ public class AddCustomerFormController implements Initializable {
 
             boolean isUpdated = customerService.updateCustomer(customer);
             if (isUpdated) {
-                showAlert("Customer Updated", "Customer Updated Successfully..!");
+                showAlert(Alert.AlertType.ERROR, "Customer Updated", "Customer Updated Successfully..!");
                 clear();
                 loadTable();
             } else {
-                showAlert("Error", "Couldn't update customer!");
+                showAlert(Alert.AlertType.ERROR, "Error", "Couldn't update customer!");
             }
         } else {
-            showAlert("Missing Fields", "Please check your form again..!!!");
+            showAlert(Alert.AlertType.ERROR, "Missing Fields", "Please check your form again..!!!");
         }
     }
 
@@ -209,14 +210,14 @@ public class AddCustomerFormController implements Initializable {
             if (customer != null) {
                 setTextToValues(customer);
             } else {
-                showAlert("Not Found", "Customer not found.");
+                showAlert(Alert.AlertType.ERROR, "Not Found", "Customer not found.");
             }
         } catch (Exception e) {
-            showAlert("Error", "An error occurred during the search.");
+            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred during the search.");
         }
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(Alert.AlertType error, String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(message);

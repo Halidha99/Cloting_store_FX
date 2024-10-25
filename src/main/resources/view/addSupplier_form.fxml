@@ -21,7 +21,7 @@
    <children>
       <AnchorPane prefHeight="633.0" prefWidth="824.0" style="-fx-background-color: #bbdefb;" stylesheets="@../Css/Table.css">
          <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" height="332.0" layoutX="2.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="818.0">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" height="346.0" layoutX="2.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="818.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0" startY="0.9962121498855678">
                      <stops>
@@ -110,6 +110,11 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
+            <Button fx:id="btnLogOut" layoutX="715.0" layoutY="598.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #f57f17;" text="LogOut" textFill="#f4f3f3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

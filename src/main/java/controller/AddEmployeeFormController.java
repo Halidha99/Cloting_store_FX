@@ -87,31 +87,33 @@ public class AddEmployeeFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colEmpId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colEmpName.setCellValueFactory(new PropertyValueFactory<>("name"));
-         colEmpNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        colEmpNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colEmpMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
-       colEmpEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colEmpEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
 
         ObservableList<String> empTitle = FXCollections.observableArrayList("MRS", "MR", "MISS");
         cmbEmpTittle.setItems(empTitle);
 
-       EmployeeTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+        EmployeeTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 setTextToValues(newValue);
             }
         });
-       loadTable();
+
+        txtEmpId.setText(employeeService.generateEmployeeId());
+        loadTable();
 
     }
 
     private void setTextToValues(Employee newValue) {
-       txtEmpId.setText(newValue.getId());
+        txtEmpId.setText(newValue.getId());
         txtEmpName.setText(newValue.getName());
         txtEmpNic.setText(newValue.getNic());
         txtEmpMobile.setText(newValue.getMobile());
         txtEmpEmail.setText(newValue.getEmail());
 
-       cmbEmpTittle.setValue(newValue.getTittle());
+        cmbEmpTittle.setValue(newValue.getTittle());
 
     }
     private void clear() {
@@ -151,8 +153,8 @@ public class AddEmployeeFormController implements Initializable {
     @FXML
     void btnEmployeeAddOnAction(ActionEvent event) {
         Employee employee = new Employee(
-               txtEmpId.getText(),
-               cmbEmpTittle.getValue(),
+                txtEmpId.getText(),
+                cmbEmpTittle.getValue(),
                 txtEmpName.getText(),
                 txtEmpNic.getText(),
                 txtEmpMobile.getText(),
@@ -177,37 +179,37 @@ public class AddEmployeeFormController implements Initializable {
     @FXML
     void btnEmployeeDeleteOnAction(ActionEvent event) {
 
-            if (!txtEmpId.getText().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Deleting");
-                alert.setContentText("Are you sure you want to delete this customer?");
-                Optional<ButtonType> result = alert.showAndWait();
+        if (!txtEmpId.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deleting");
+            alert.setContentText("Are you sure you want to delete this customer?");
+            Optional<ButtonType> result = alert.showAndWait();
 
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    boolean isDeleted = employeeService.deleteEmployeeById(txtEmpId.getText());
-                    if (isDeleted) {
-                        showAlert("Employee Deleted", "Employee deleted successfully.");
-                        clear();
-                        loadTable();
-                    } else {
-                        showAlert("Error", "Failed to delete employee.");
-                    }
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                boolean isDeleted = employeeService.deleteEmployeeById(txtEmpId.getText());
+                if (isDeleted) {
+                    showAlert("Employee Deleted", "Employee deleted successfully.");
+                    clear();
+                    loadTable();
+                } else {
+                    showAlert("Error", "Failed to delete employee.");
                 }
             }
+        }
 
     }
 
     @FXML
     void btnEmployeeupdateOnAction(ActionEvent event) {
         if (!txtEmpName.getText().isEmpty() && employeeService.isValidEmail(txtEmpEmail.getText()) && !txtEmpNic.getText().isEmpty()) {
-           Employee employee= new Employee(
+            Employee employee= new Employee(
                     txtEmpId.getText(),
                     cmbEmpTittle.getValue(),
-                   txtEmpName.getText(),
+                    txtEmpName.getText(),
                     txtEmpNic.getText(),
-                   txtEmpMobile.getText(),
+                    txtEmpMobile.getText(),
                     txtEmpEmail.getText(),
-                   txtEmpPassw.getText()
+                    txtEmpPassw.getText()
             );
 
             boolean isUpdated = employeeService.updateEmployee(employee);

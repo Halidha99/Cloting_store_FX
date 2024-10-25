@@ -91,16 +91,10 @@ loadDateAndTime();
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addCustomer_form.fxml"));
-
-
             AnchorPane root = loader.load();
-
-
             Scene scene = new Scene(root);
 
-
             Stage stage = (Stage) btnCustomer.getScene().getWindow();
-
 
             stage.setScene(scene);
             stage.setTitle("Customer Form");
@@ -114,17 +108,10 @@ loadDateAndTime();
     void btnEmployeeOnAction(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/addEmployee_form.fxml"));
-
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/addEmployee_form.fxml"));
             AnchorPane root = loader.load();
-
-
             Scene scene = new Scene(root);
-
-
             Stage stage = (Stage) btnEmployee.getScene().getWindow();
-
 
             stage.setScene(scene);
             stage.setTitle("Employee Form");
@@ -161,10 +148,7 @@ loadDateAndTime();
             e.printStackTrace();
         }
 
-
-
 }
-
     @FXML
     void btnOrderOnAction(ActionEvent event) {
         try {

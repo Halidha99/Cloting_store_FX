@@ -25,6 +25,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddItemFormController implements Initializable {
+    @FXML
+    private Button btnLogOut;
 
     @FXML
     private TableView<Item> ItemTable;
@@ -80,8 +82,6 @@ public class AddItemFormController implements Initializable {
     ItemService itemService = ServiceFactory.getInstance().getServiceType(ServiceType.ITEM);
     SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.SUPPLIER);
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -92,14 +92,11 @@ public class AddItemFormController implements Initializable {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colSupplierId.setCellValueFactory(new PropertyValueFactory<>("supplier.id"));
 
-
-
         ObservableList<String> category = FXCollections.observableArrayList("Casual Dresses", "Formal Dresses", "Evening Dresses", "Summer Dresses", "Party Dresses");
         cmbCategory.setItems(category);
 
         ObservableList<String> size = FXCollections.observableArrayList("XS", "S", "M", "L", "XL", "XXL");
         cmbPrdSize.setItems(size);
-
 
         ItemTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
@@ -110,10 +107,8 @@ public class AddItemFormController implements Initializable {
         loadTable();
         txtItemCode.setText(itemService.generateItemId());
         loadSupplierID();
-
-
-
     }
+
     private void loadSupplierID() {
         ObservableList<String> suppliers = FXCollections.observableArrayList();
         ObservableList<Supplier> sup = supplierService.getAllSupplier();
@@ -122,6 +117,7 @@ public class AddItemFormController implements Initializable {
         }
         cmbSupplierId.setItems(suppliers);
     }
+
     private void setTextToValues(Item newValue) {
         txtItemCode.setText(newValue.getId());
         txtxName.setText(newValue.getName());
@@ -143,7 +139,7 @@ public class AddItemFormController implements Initializable {
                 supplierService.searchSupplierByID(cmbSupplierId.getValue()),
                 Integer.parseInt(txtxUnitPrice.getText())
         );
-        System.out.println(item);
+
         if (!txtxName.getText().isEmpty()) {
             boolean isInsert = itemService.addItem(item);
             if (isInsert) {
@@ -154,8 +150,8 @@ public class AddItemFormController implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
             }
         }
-
     }
+
     private void clear() {
         txtItemCode.setText("");
         txtxName.setText("");
@@ -166,6 +162,7 @@ public class AddItemFormController implements Initializable {
         cmbSupplierId.setValue(null);
         txtItemCode.setText(itemService.generateItemId());
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -184,14 +181,11 @@ public class AddItemFormController implements Initializable {
         } catch (IOException e) {
             showAlert("Error", "Unable to load the dashboard.");
         }
-
     }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clear();
-
-
     }
 
     @FXML
@@ -209,7 +203,6 @@ public class AddItemFormController implements Initializable {
                 loadTable();
             }
         }
-
     }
 
     @FXML
@@ -222,10 +215,8 @@ public class AddItemFormController implements Initializable {
                 showAlert("Not Found", "Item not found!");
             }
         } catch (Exception e) {
-            System.out.println("Item not found.");
+            showAlert("Error", "An error occurred while searching for the item.");
         }
-
-
     }
 
     @FXML
@@ -254,8 +245,6 @@ public class AddItemFormController implements Initializable {
         } else {
             showAlert("Missing Data", "Please check your form again!");
         }
-
-
     }
 
     @FXML
@@ -266,22 +255,34 @@ public class AddItemFormController implements Initializable {
             if (supplier != null) {
                 txtSupName.setText(supplier.getName());
             } else {
+                txtSupName.clear();
                 showAlert("Error", "Supplier not found.");
             }
         } else {
             showAlert("Input Error", "Please select a supplier ID.");
         }
-
     }
+
     private void loadTable() {
         ObservableList<Item> items = itemService.getAllItem();
-        System.out.println("Items loaded: " + items);
-        if (items == null || items.isEmpty()) {
-            System.out.println("No items returned from the service.");
-        }
         ItemTable.setItems(items);
     }
 
+    @FXML
+    void btnLogOutOnAction(ActionEvent event) {
+
+        Stage currentStage = (Stage) btnLogOut.getScene().getWindow();
+        currentStage.close();
 
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/employee_dashboard_form.fxml"));
+            Stage dashboardStage = new Stage();
+            dashboardStage.setTitle("Employee Dashboard");
+            dashboardStage.setScene(new Scene(loader.load()));
+            dashboardStage.show();
+        } catch (IOException e) {
+            showAlert("Error", "Unable to load the dashboard.");
+        }
+    }
 }

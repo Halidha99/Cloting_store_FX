@@ -17,9 +17,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="633.0" prefWidth="824.0" style="-fx-background-color: #bbdefb;" stylesheets="@../Css/Table.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddItemFormController">
+<AnchorPane prefHeight="633.0" prefWidth="894.0" style="-fx-background-color: #bbdefb;" stylesheets="@../Css/Table.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddItemFormController">
    <children>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" height="332.0" layoutX="2.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="818.0">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" height="332.0" layoutX="2.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-radius: 30;" width="937.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startY="0.9962121498855678">
                <stops>
@@ -37,14 +37,15 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TableView fx:id="ItemTable" layoutX="27.0" layoutY="388.0" prefHeight="200.0" prefWidth="782.0" style="-fx-background-color: #0288d1;">
+      <TableView fx:id="ItemTable" layoutX="35.0" layoutY="393.0" prefHeight="198.0" prefWidth="875.0" style="-fx-background-color: #0288d1;">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="75.0" text="Item Code" />
-          <TableColumn fx:id="colCategory" prefWidth="154.4000244140625" text="Category" />
-            <TableColumn fx:id="colPrdName" prefWidth="189.5999755859375" text="Name" />
-            <TableColumn fx:id="colQty" prefWidth="104.0" text="Qty" />
-            <TableColumn fx:id="colSize" prefWidth="144.00006103515625" text="Size" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="118.39990234375" text="Price" />
+          <TableColumn fx:id="colCategory" prefWidth="140.7999725341797" text="Category" />
+            <TableColumn fx:id="colPrdName" prefWidth="198.3999481201172" text="Name" />
+            <TableColumn fx:id="colQty" prefWidth="93.60003662109375" text="Qty" />
+            <TableColumn fx:id="colSize" prefWidth="113.5999755859375" text="Size" />
+            <TableColumn fx:id="colUnitPrice" minWidth="0.0" prefWidth="135.20001220703125" text="Price" />
+            <TableColumn fx:id="colSupplierId" prefWidth="120.0" text="Supplier Id" />
         </columns>
       </TableView>
       <Label layoutX="5.0" layoutY="14.0" prefHeight="18.0" prefWidth="238.0" text="Add Items" textFill="#101010">
@@ -111,5 +112,10 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
+      <Button fx:id="btnLogOut" layoutX="853.0" layoutY="594.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #f57f17;" text="LogOut" textFill="#f4f3f3">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

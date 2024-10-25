@@ -15,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Supplier;
 import service.ServiceFactory;
-
 import service.custom.SupplierService;
 import util.ServiceType;
 
@@ -25,9 +24,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddSupplierFormController implements Initializable {
+    @FXML
+    private Button btnLogOut;
 
     @FXML
-    private TableView<?> SupplierTable;
+    private TableView<Supplier> SupplierTable;
 
     @FXML
     private JFXButton btnDelete;
@@ -48,22 +49,22 @@ public class AddSupplierFormController implements Initializable {
     private JFXComboBox<String> cmbSupTittle;
 
     @FXML
-    private TableColumn<?, ?> colItemName;
+    private TableColumn<Supplier, String> colItemName;
 
     @FXML
-    private TableColumn<?, ?> colSuppCompany;
+    private TableColumn<Supplier, String> colSuppCompany;
 
     @FXML
-    private TableColumn<?, ?> colSuppId;
+    private TableColumn<Supplier, String> colSuppId;
 
     @FXML
-    private TableColumn<?, ?> colSupplierEmail;
+    private TableColumn<Supplier, String> colSupplierEmail;
 
     @FXML
-    private TableColumn<?, ?> colSuppliername;
+    private TableColumn<Supplier, String> colSuppliername;
 
     @FXML
-    private TableColumn<?, ?> colsuppMobile;
+    private TableColumn<Supplier, String> colsuppMobile;
 
     @FXML
     private JFXTextField txtSuppCmpany;
@@ -82,7 +83,9 @@ public class AddSupplierFormController implements Initializable {
 
     @FXML
     private TextField txtxSearch;
-   SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.SUPPLIER);
+
+    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.SUPPLIER);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colSuppId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -91,39 +94,39 @@ public class AddSupplierFormController implements Initializable {
         colsuppMobile.setCellValueFactory(new PropertyValueFactory<>("mobile"));
         colSupplierEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-
         ObservableList<String> supTitle = FXCollections.observableArrayList("MRS", "MR", "MISS");
         cmbSupTittle.setItems(supTitle);
         SupplierTable.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
-                setTextToValues((Supplier) newValue);
+                setTextToValues(newValue);
             }
         }));
 
-       SupplierTable.setItems(supplierService.getAllSupplier());
+        SupplierTable.setItems(supplierService.getAllSupplier());
         txtSuppId.setText(supplierService.generateSupplierId());
         refreshTable();
-
     }
 
     private void setTextToValues(Supplier newValue) {
         txtSuppId.setText(newValue.getId());
         txtSuppName.setText(newValue.getName());
-       txtSuppCmpany.setText(newValue.getEmail());
+        txtSuppCmpany.setText(newValue.getCompany());
         txtSupplierMob.setText(newValue.getMobile());
-        txtSuppEmail.setText(newValue.getCompany());
+        txtSuppEmail.setText(newValue.getEmail());
     }
-    private void refreshTable(){
+
+    private void refreshTable() {
         SupplierTable.setItems(supplierService.getAllSupplier());
     }
 
-    private void clear(){
+    private void clear() {
         txtSuppId.setText(supplierService.generateSupplierId());
         txtSuppName.setText("");
         txtSuppCmpany.setText("");
         txtSupplierMob.setText("");
-       txtSuppEmail.setText("");
+        txtSuppEmail.setText("");
     }
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
         Supplier supplier = new Supplier(
@@ -135,7 +138,6 @@ public class AddSupplierFormController implements Initializable {
                 txtSuppEmail.getText()
         );
         if (!txtSuppName.getText().equals("") && supplierService.isValidEmail(txtSuppEmail.getText()) && !txtSupplierMob.getText().equals("")) {
-            System.out.println(supplier.toString());
             boolean isInsert = supplierService.addSupplier(supplier);
             if (isInsert) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -147,7 +149,6 @@ public class AddSupplierFormController implements Initializable {
         } else {
             new Alert(Alert.AlertType.ERROR, "Supplier Not Added..!!!").show();
         }
-
     }
 
     @FXML
@@ -161,19 +162,18 @@ public class AddSupplierFormController implements Initializable {
         } catch (IOException e) {
             showAlert("Error", "Unable to load the dashboard.");
         }
-
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting");
-        alert.setContentText("Are you  want to delete this Supplier");
+        alert.setContentText("Are you sure you want to delete this Supplier?");
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get()== ButtonType.OK){
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             boolean isDeleted = supplierService.deleteSupplierById(txtSuppId.getText());
-            if (isDeleted){
+            if (isDeleted) {
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Supplier Deleted");
                 alert2.setContentText("Supplier deleted successfully");
@@ -182,63 +182,60 @@ public class AddSupplierFormController implements Initializable {
                 refreshTable();
             }
         }
-
     }
 
     @FXML
     void btnupdateOnAction(ActionEvent event) {
-        if (!txtSuppName.getText().equals("")  && supplierService.isValidEmail(txtSuppEmail.getText()) && !txtSupplierMob.getText().equals("")){
+        if (!txtSuppName.getText().equals("") && supplierService.isValidEmail(txtSuppEmail.getText()) && !txtSupplierMob.getText().equals("")) {
             Supplier supplier = new Supplier(
-                   txtSuppId.getText(),
+                    txtSuppId.getText(),
                     cmbSupTittle.getValue(),
                     txtSuppName.getText(),
                     txtSuppCmpany.getText(),
-                   txtSupplierMob.getText(),
+                    txtSupplierMob.getText(),
                     txtSuppEmail.getText()
             );
 
             boolean isAdd = supplierService.updateSupplier(supplier);
             if (isAdd) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Supplier update");
+                alert.setTitle("Supplier Update");
                 alert.setContentText("Supplier Updated Successfully..!");
                 alert.showAndWait();
                 clear();
                 refreshTable();
-            }else {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setContentText("Couldn't update!");
                 alert.showAndWait();
-                clear();
-                refreshTable();
             }
-        }else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Something Missing");
             alert.setContentText("Please Check your Form again..!!!");
             alert.showAndWait();
         }
-
-
     }
 
     @FXML
     void searchOnAction(ActionEvent event) {
         try {
             Supplier supplier = supplierService.searchSupplierByName(txtSuppName.getText());
-            if (supplier!=null){
+            if (supplier != null) {
                 txtSuppId.setText(supplier.getId());
                 txtSuppName.setText(supplier.getName());
-                txtSuppCmpany.setText(supplier.getEmail());
-               txtSupplierMob.setText(supplier.getMobile());
-                txtSuppEmail.setText(supplier.getCompany());
+                txtSuppCmpany.setText(supplier.getCompany());
+                txtSupplierMob.setText(supplier.getMobile());
+                txtSuppEmail.setText(supplier.getEmail());
+            } else {
+                showAlert("Not Found", "Supplier not found.");
             }
         } catch (Exception e) {
-            System.out.println("not found");
+            System.out.println("Not found");
         }
-
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -246,5 +243,21 @@ public class AddSupplierFormController implements Initializable {
         alert.showAndWait();
     }
 
+    @FXML
+    void btnLogOutOnAction(ActionEvent event) {
 
+        Stage currentStage = (Stage) btnLogOut.getScene().getWindow();
+        currentStage.close();
+
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/employee_dashboard_form.fxml"));
+            Stage dashboardStage = new Stage();
+            dashboardStage.setTitle("Employee Dashboard");
+            dashboardStage.setScene(new Scene(loader.load()));
+            dashboardStage.show();
+        } catch (IOException e) {
+            showAlert("Error", "Unable to load the dashboard.");
+        }
+    }
 }
