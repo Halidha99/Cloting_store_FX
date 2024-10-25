@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane style="-fx-background-color: #bbdefb;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="controller.ReportController">
+    <children>
+        <VBox alignment="CENTER" prefWidth="600" spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+            <!-- Title -->
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Sales Report" />
+
+            <!-- Controls for Date and Report Type Selection -->
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="Select Date:" />
+                <DatePicker fx:id="datePicker" />
+                <Label text="Month:" />
+                <JFXComboBox fx:id="monthCombo" promptText="Month">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="January" />
+                            <String fx:value="February" />
+                            <String fx:value="March" />
+                            <!-- Add remaining months -->
+                        </FXCollections>
+                    </items>
+                </JFXComboBox>
+                <Label text="Year:" />
+                <JFXTextField fx:id="yearText" promptText="Year" />
+            </HBox>
+
+            <!-- Buttons for Report Type -->
+            <HBox alignment="CENTER" spacing="10">
+                <Button onAction="#loadDailyReport" text="Daily Report" />
+                <Button onAction="#loadMonthlyReport" text="Monthly Report" />
+                <Button onAction="#loadYearlyReport" text="Yearly Report" />
+            </HBox>
+
+            <!-- TableView for Report Display -->
+            <TableView fx:id="reportTable" prefHeight="300" style="-fx-background-color: #1976d2;" stylesheets="@../Css/Table.css">
+                <columns>
+                    <TableColumn fx:id="colDate" prefWidth="100" text="Date" />
+                    <TableColumn fx:id="colTotalItemsSold" prefWidth="150" text="Total Items Sold" />
+                    <TableColumn fx:id="colTotalSales" prefWidth="150" text="Total Sales" />
+                    <TableColumn fx:id="colTotalReturns" prefWidth="198.4000244140625" text="Total Returns" />
+                </columns>
+            </TableView>
+
+            <!-- Export Button -->
+            <Button onAction="#exportToPdf" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Export to PDF" />
+        </VBox>
+    </children>
+</AnchorPane>

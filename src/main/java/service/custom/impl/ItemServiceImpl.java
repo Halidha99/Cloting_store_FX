@@ -81,6 +81,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item searchItemByID(String id) {
-        return null;
+        ItemEntity itemEntity = itemDao.search(id);
+        return new ObjectMapper().convertValue(itemEntity,Item.class);
     }
 }

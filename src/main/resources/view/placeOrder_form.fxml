@@ -140,17 +140,17 @@
                   <JFXTextField fx:id="txtQty" layoutX="148.0" layoutY="271.0" prefHeight="25.0" prefWidth="181.0" unFocusColor="#afeca2" />
                </children>
             </Pane>
-            <JFXButton fx:id="btnRemove" buttonType="RAISED" disable="true" layoutX="959.0" layoutY="418.0" onAction="#RemoveOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #f57f17; -fx-background-radius: 30;" text="REMOVE" textFill="#131313">
+            <JFXButton fx:id="btnRemove" buttonType="RAISED" disable="true" layoutX="958.0" layoutY="407.0" onAction="#RemoveOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #f57f17; -fx-background-radius: 30;" text="REMOVE" textFill="#131313">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1153.0" layoutY="418.0" onAction="#printBillOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #6c5ce7; -fx-background-radius: 30;" text="PRINT BILL" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1146.0" layoutY="407.0" onAction="#printBillOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #6c5ce7; -fx-background-radius: 30;" text="PRINT BILL" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="507.0" layoutY="565.0" onAction="#btnPlaceOrderOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #6c5ce7; -fx-background-radius: 30;" text="PLACE ORDER" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="783.0" layoutY="407.0" onAction="#btnPlaceOrderOnAction" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #6c5ce7; -fx-background-radius: 30;" text="PLACE ORDER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -207,7 +207,7 @@
                   <DropShadow />
                </effect>
             </Pane>
-            <Button fx:id="btnLogOut" layoutX="686.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #f57f17;" text="LogOut" textFill="#f4f3f3">
+            <Button fx:id="btnLogOut" layoutX="1381.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #f57f17;" text="LogOut" textFill="#f4f3f3">
                <font>
                   <Font size="15.0" />
                </font>

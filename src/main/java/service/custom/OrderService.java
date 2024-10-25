@@ -10,9 +10,9 @@ import java.util.List;
 public interface OrderService  extends SuperService {
     String generateOrderId();
 
-    boolean addOrder(Order order); // Existing method
+    boolean addOrder(Order order);
 
-    // Add this method to accept order details as well
+
     boolean addOrder(Order order, List<OrderDetailEntity> orderDetailList);
 
     ObservableList getAllOrders();

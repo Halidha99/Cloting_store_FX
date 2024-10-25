@@ -1,20 +1,29 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.ResourceBundle;
 
-public class EmployeeDashBoardFormController {
+public class EmployeeDashBoardFormController implements Initializable {
 
     @FXML
     private JFXButton btnItem;
@@ -174,5 +183,31 @@ public class EmployeeDashBoardFormController {
             showAlert("Error", "Could not load login screen.");
             e.printStackTrace();
         }
+    }
+    private void loadDateAndTime() {
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = f.format(date);
+
+        lblDate.setText(dateNow);
+
+//-------------------------------------------------------------------------------
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime now = LocalTime.now();
+            lblTime.setText(now.getHour() + " : " + now.getMinute() + " : " + now.getSecond());
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadDateAndTime();
     }
 }
